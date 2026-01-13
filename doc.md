@@ -944,15 +944,16 @@ export const tooltip: Action<HTMLElement, TooltipParams> = (node, params) => {
 		movies = movies.filter((m) => m.id !== id);
 	}
 
-	function shuffle() {
-		// Fisher-Yates shuffle
-		const copy = movies.slice();
-		for (let i = copy.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[copy[i], copy[j]] = [copy[j], copy[i]];
-		}
-		movies = copy;
-	}
+
+  function shuffle() {
+    // Fisher-Yates shuffle (proper random shuffle)
+    const arr = [...movies];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    movies = arr;
+  }
 
 	function sortByTitle() {
 		movies = movies.slice().sort((a, b) => a.title.localeCompare(b.title));
