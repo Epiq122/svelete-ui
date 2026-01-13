@@ -18,14 +18,14 @@ export const tooltip: Action<HTMLHtmlElement, TooltipParams> = (node, params) =>
 		});
 	}
 
-  setup(params);
+	setup(params);
 
-  return {
-    update(next) {
-      setup(next);
-    },
-    destory() {
-      instance?.destroy();
-    }
-  }
+	return {
+		update(next) {
+			setup(next);
+		},
+		destroy() {
+			instance?.destroy();
+		}
+	};
 };
